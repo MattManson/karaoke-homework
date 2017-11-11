@@ -1,22 +1,18 @@
 require('pry')
 class Room
 
-  attr_accessor :room_name, :num_guests, :playlist
+  attr_accessor :room_name, :num_guests, :capacity, :playlist
 
-  def initialize(room_name, people_in_room)
+  def initialize(room_name, people_in_room, capacity)
     @room_name = room_name
     @num_guests = people_in_room
+    @capacity = capacity
     @playlist = []
-    @capacity = 4
   end
 
   def check_in(guest)
-    if @num_guests.length == @capacity
+    if @num_guests.length >= @capacity
       return "room full"
-      #   # guest.each {|i| @num_guests << i} - this also works by flattening received array
-      #   @num_guests.push *guests
-      #   return @num_guests.length
-      # end
       else
         @num_guests.push guest
         guest.wallet -=50
@@ -36,17 +32,18 @@ class Room
   end
 
   def how_many_guests(guests)
-    # if @num_guests.length <=4
-      guests.each {|i| @num_guests << i}
-      # @num_guests.push *guests - this also works by flattening received array
-      return @num_guests.length
-    # elsif @num_guests >=4
-    #   return "room full"
-    # end
+    guests.each {|i| @num_guests << i}
+    return @num_guests.length
+  end
+
+  def fav_song1(guest)
+    if @playlist[0].name == guest.fav_song
+      return "OI OI OI!"
+    else
+      return "not my favourite tune"
+    end
   end
 
 
 
 end
-# a = [1,2,3]
-# [4,5,6].each {|i| a << i }
