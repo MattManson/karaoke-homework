@@ -3,6 +3,7 @@ require('minitest/rg')
 require_relative("../room.rb")
 require_relative("../guest.rb")
 require_relative("../song.rb")
+require_relative("../bar_tab.rb")
 
 class TestRoom < MiniTest::Test
 
@@ -53,16 +54,5 @@ class TestRoom < MiniTest::Test
     assert_equal("room full", capacity)
   end
 
-  def test_fav_song_is_playing
-    playing = @room1.add_to_playlist(@song1)
-    response = @room1.fav_song1(@guest1)
-    assert_equal("OI OI OI!", response)
-  end
-
-  def test_fav_song_not_playing
-    playing = @room1.add_to_playlist(@song2)
-    response = @room1.fav_song1(@guest1)
-    assert_equal("not my favourite tune", response)
-  end
 
 end

@@ -36,14 +36,4 @@ class Room
     return @num_guests.length
   end
 
-  def fav_song1(guest)
-    if @playlist[0].name == guest.fav_song
-      return "OI OI OI!"
-    else
-      return "not my favourite tune"
-    end
-  end
-
-
-
 end
